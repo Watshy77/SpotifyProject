@@ -1,3 +1,9 @@
+<script setup lang="ts">
+
+import Player from '@/components/player.vue';
+
+</script>
+
 <template>
     <nav class="flex items-center justify-between flex-wrap p-6 bg-dark">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -17,9 +23,6 @@
                 <a id="nav-album" href="/albums" class="block mt-4 lg:inline-block lg:mt-0 w-16 text-white hover:font-bold">
                     Albums
                 </a>
-                <a id="nav-artist" href="/artists" class="block mt-4 lg:inline-block lg:mt-0 w-16 text-white hover:font-bold">
-                    Artists
-                </a>
             </div>
             <div>
                 <a href="/login"
@@ -32,4 +35,7 @@
     <div class="flex-grow overflow-y-auto bg-primary">
         <router-view></router-view>
     </div>
+    <footer class="fixed bottom-0 w-full">
+        <Player />
+    </footer>
 </template>

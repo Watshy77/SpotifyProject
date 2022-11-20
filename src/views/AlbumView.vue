@@ -47,8 +47,13 @@ init()
             <p class="uppercase">{{ album.album_type }}</p>
             <h1 class="text-6xl font-bold">{{ album.name }}</h1>
             <div class="flex items-center gap-3 text-base pt-10">
-                <div v-if="artist.images" class="w-8 h-8 bg-center bg-no-repeat bg-cover rounded-full border-red-600" :style="{ backgroundImage: 'url(' + artist.images[0].url + ')' }"></div>
-                <a v-if="album.artists" href="" class="font-bold hover:underline">{{ album.artists[0].name }}</a>
+                <div v-if="artist.images" class="w-8 h-8 bg-center bg-no-repeat bg-cover rounded-full border-red-600"
+                    :style="{ backgroundImage: 'url(' + artist.images[0].url + ')' }">
+                </div>
+                <router-link v-if="album.artists" :to="{ name: 'artist', params: { id: album.artists[0].id } }"
+                    class="font-bold hover:underline">
+                    {{ album.artists[0].name }}
+                </router-link>
                 <div class="bg-white w-2 h-2 rounded-full"></div>
                 <p v-if="album.release_date">{{ album.release_date.slice(0, 4) }}</p>
                 <div class="bg-white w-2 h-2 rounded-full"></div>
@@ -68,15 +73,22 @@ init()
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(track, index) in tracks" :key="track.id" class="text-white rounded-lg transition ease-in-out duration-300 hover:bg-dark/50">
+                <tr v-for="(track, index) in tracks" :key="track.id"
+                    class="text-white rounded-lg transition ease-in-out duration-300 hover:bg-dark/50">
                     <td class="text-center">{{ index + 1 }}</td>
                     <td class="flex flex-col">
                         <p class="text-lg">{{ track.name }}</p>
-                        <a href="" class="text-third hover:underline">{{ track.artists[0].name }}</a>
+                        <div class="flex gap-2">
+                            <router-link v-for="trackArtist in track.artists" v-if="track.artists" :to="{ name: 'artist', params: { id: trackArtist.id } }"
+                            class="text-third hover:underline">
+                            {{ trackArtist.name }}
+                        </router-link>
+                        </div>
                     </td>
                     <td class="text-right">{{ convertMsTrack(track.duration_ms) }}</td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <pre class="text-white">{{ tracks }}</pre>
 </template>

@@ -3,7 +3,7 @@ import DefaultLayout from '@/layout/default.vue'
 import HomeView from '../views/HomeView.vue'
 import AlbumsView from '../views/AlbumsView.vue'
 import AlbumView from '../views/AlbumView.vue'
-import ArtistsView from '../views/ArtistsView.vue'
+import ArtistView from '../views/ArtistView.vue'
 import Login from '../views/Login.vue'
 import Callback from '../views/Callback.vue'
 
@@ -21,8 +21,8 @@ const router = createRouter({
                 },
                 {
                     path: '/artists/:id',
-                    name: 'artists',
-                    component: ArtistsView,
+                    name: 'artist',
+                    component: ArtistView,
                 },
                 {
                     path: '/albums',

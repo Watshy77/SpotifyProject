@@ -19,3 +19,17 @@ export function getAlbum(id: string) {
             return response.data;
         })
 }
+
+export function getArtist(id: string) {
+    return instance.get(`/artists/${id}`)
+        .then(response => {
+            return response.data;
+        })
+}
+
+export function getDevices() {
+    return instance.get('/me/player/devices')
+        .then(response => {
+            return response.data;
+        })
+}
