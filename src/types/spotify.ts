@@ -72,3 +72,7 @@ export interface SpotifyImage {
     url: string;
     width: number;
 }
+
+export interface SpotifyTopTracks {
+    tracks: SpotifyTrack[];
+}

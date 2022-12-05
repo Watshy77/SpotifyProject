@@ -63,7 +63,7 @@ init()
         </div>
     </div>
     <div class="w-full h-0.5 bg-white"></div>
-    <div class="p-10">
+    <div class="p-10 pb-40">
         <table class="w-full">
             <thead class="text-third">
                 <tr class="border-b-2 border-b-third">
@@ -90,5 +90,4 @@ init()
             </tbody>
         </table>
     </div>
-    <pre class="text-white">{{ tracks }}</pre>
 </template>

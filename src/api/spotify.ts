@@ -27,8 +27,8 @@ export function getArtist(id: string) {
         })
 }
 
-export function getDevices() {
-    return instance.get('/me/player/devices')
+export function getTopTracks(id: string) {
+    return instance.get(`/artists/${id}/top-tracks?country=FR`)
         .then(response => {
             return response.data;
         })

@@ -33,7 +33,7 @@ import Player from '@/components/player.vue';
         </div>
     </nav>
     <div class="flex-grow overflow-y-auto bg-primary">
-        <router-view></router-view>
+        <router-view :key="$route.fullPath"></router-view>
     </div>
     <footer class="fixed bottom-0 w-full">
         <Player />
