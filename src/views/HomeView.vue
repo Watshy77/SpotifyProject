@@ -15,5 +15,5 @@ init()
 <!-- Faire le même home que spotify, avec un random des albums et tracks -->
 
 <template>
-    <pre class="text-white">{{ response }}</pre>
+
 </template>
