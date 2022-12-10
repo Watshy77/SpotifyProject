@@ -25,7 +25,7 @@ init()
         <input v-model="query" name="query" type="text" class="w-1/2 input-artist border-2 border-gray-300 p-2 rounded-lg" placeholder="Search Albums">
         <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" value="Search">
     </form>
-    <div class="flex flex-wrap justify-center gap-4 pt-10">
+    <div class="flex flex-wrap justify-center gap-4 pt-10 pb-40">
         <div v-for="album in albums" :key="album.id" class="w-1/6 bg-secondary text-white rounded-xl transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-95 hover:bg-dark">
             <router-link :to="{ name: 'album', params: { id: album.id } }" class="h-full flex flex-col items-center place-content-around p-10">
                 <a>
