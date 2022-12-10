@@ -1,13 +1,13 @@
 <script setup lang="ts">
 
-import Player from '@/components/player.vue';
+import { RouterLink } from 'vue-router';
 
 </script>
 
 <template>
     <nav class="flex items-center justify-between flex-wrap p-6 bg-dark">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
-            <a href="/" class="font-semibold text-xl tracking-tight">Spotify</a>
+            <RouterLink to="/" class="font-semibold text-xl tracking-tight">Spotify</RouterLink>
         </div>
         <div class="block lg:hidden">
             <button
@@ -20,9 +20,9 @@ import Player from '@/components/player.vue';
         </div>
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
             <div class="text-sm lg:flex-grow">
-                <a id="nav-album" href="/albums" class="block mt-4 lg:inline-block lg:mt-0 w-16 text-white hover:font-bold">
+                <RouterLink to="/albums" class="block mt-4 lg:inline-block lg:mt-0 w-16 text-white hover:font-bold">
                     Albums
-                </a>
+                </RouterLink>
             </div>
             <div>
                 <a href="/login"
@@ -35,7 +35,4 @@ import Player from '@/components/player.vue';
     <div class="flex-grow overflow-y-auto bg-primary">
         <router-view :key="$route.fullPath"></router-view>
     </div>
-    <footer class="fixed bottom-0 w-full">
-        <Player  />
-    </footer>
 </template>
