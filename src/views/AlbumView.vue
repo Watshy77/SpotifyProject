@@ -6,6 +6,8 @@ import { ref } from 'vue';
 
 import type { SpotifyAlbum, SpotifyArtist, SpotifyTrack } from '@/types/spotify';
 
+import { usePlayerStore } from '@/stores/player';
+
 const route = useRoute()
 
 const album = ref({} as SpotifyAlbum);
@@ -13,6 +15,9 @@ const artist = ref({} as SpotifyArtist);
 const tracks = ref([] as SpotifyTrack[]);
 const param = ref(<string>route.params.id);
 const albumTimeMs = ref(0);
+
+const playerStore = usePlayerStore()
+const { addSongUrl } = playerStore
 
 async function init() {
     if (param.value.length) {
@@ -23,6 +28,10 @@ async function init() {
             albumTimeMs.value = tracks.value.reduce((acc, track) => acc + track.duration_ms, albumTimeMs.value);
         }
     }
+}
+
+async function playTrack(song: string) {
+    addSongUrl(song);
 }
 
 function convertMsAlbum(ms: number) {
@@ -73,7 +82,7 @@ init()
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(track, index) in tracks" :key="track.id"
+                <tr v-for="(track, index) in tracks" :key="track.id" @click="playTrack(track.preview_url)"
                     class="text-white rounded-lg transition ease-in-out duration-300 hover:bg-dark/50">
                     <td class="text-center">{{ index + 1 }}</td>
                     <td class="flex flex-col">

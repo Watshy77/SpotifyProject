@@ -36,6 +36,6 @@ import Player from '@/components/player.vue';
         <router-view :key="$route.fullPath"></router-view>
     </div>
     <footer class="fixed bottom-0 w-full">
-        <Player />
+        <Player  />
     </footer>
 </template>
