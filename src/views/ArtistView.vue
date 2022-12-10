@@ -6,16 +6,25 @@ import { ref } from 'vue';
 
 import type { SpotifyArtist, SpotifyTopTracks } from '@/types/spotify';
 
+import { usePlayerStore } from '@/stores/player';
+
 const route = useRoute()
 const param = ref(<string>route.params.id);
 const artist = ref({} as SpotifyArtist);
 const topTracks = ref({} as SpotifyTopTracks);
+
+const playerStore = usePlayerStore()
+const { addSongUrl } = playerStore
 
 async function init() {
     if (param.value.length) {
         artist.value = (await getArtist(param.value));
         topTracks.value = (await getTopTracks(param.value));
     }
+}
+
+async function playTrack(song: string) {
+    addSongUrl(song);
 }
 
 function convertMsTrack(ms: number) {
@@ -49,7 +58,7 @@ init()
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(topTrack) in topTracks.tracks" :key="topTrack.id"
+                <tr v-for="(topTrack) in topTracks.tracks" :key="topTrack.id" @click="playTrack(topTrack.preview_url)"
                     class="text-white rounded-lg transition ease-in-out duration-300 hover:bg-dark/50">
                     <td class="flex flex-col">
                         <p class="text-lg">{{ topTrack.name }}</p>

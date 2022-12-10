@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 import { getAlbum, search } from '@/api/spotify';
 
 import { useRoute } from 'vue-router';
@@ -88,10 +89,11 @@ init()
                     <td class="flex flex-col">
                         <p class="text-lg">{{ track.name }}</p>
                         <div class="flex gap-2">
-                            <router-link v-for="trackArtist in track.artists" v-if="track.artists" :to="{ name: 'artist', params: { id: trackArtist.id } }"
-                            class="text-third hover:underline">
-                            {{ trackArtist.name }}
-                        </router-link>
+                            <router-link v-for="trackArtist in track.artists" v-if="track.artists"
+                                :to="{ name: 'artist', params: { id: trackArtist.id } }"
+                                class="text-third hover:underline">
+                                {{ trackArtist.name }}
+                            </router-link>
                         </div>
                     </td>
                     <td class="text-right">{{ convertMsTrack(track.duration_ms) }}</td>
